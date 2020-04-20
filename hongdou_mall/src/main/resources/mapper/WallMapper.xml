@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zx.hongdou_mall.dao.WallMapper">
+    <insert id="createOne">
+        INSERT INTO wall( deed, img) VALUES (#{wall.deed},#{wall.img})
+    </insert>
+    <update id="updateOne">
+        UPDATE wall
+        <set>
+            <if test="wall.deed != null and wall.deed != ''">
+                deed=#{wall.deed},
+            </if>
+            <if test="param1.img != null and param1.img != ''">
+                img=#{wall.img}
+            </if>
+        </set>
+        WHERE id=#{wall.id}
+    </update>
+    <update id="deleteOne">
+        UPDATE wall SET delete_time=NOW() WHERE id=#{id} AND delete_time='0000-00-00 00:00:00'
+    </update>
+    <select id="selectOne" resultType="com.zx.hongdou_mall.entity.Wall">
+        SELECT id, deed, img, create_time AS createTime, update_time AS updateTime FROM wall WHERE id=#{id} AND delete_time='0000-00-00 00:00:00'
+    </select>
+    <select id="findAll" resultType="com.zx.hongdou_mall.entity.Wall">
+        SELECT id, deed, img, create_time AS createTime, update_time AS updateTime FROM wall WHERE delete_time='0000-00-00 00:00:00'
+    </select>
+</mapper>

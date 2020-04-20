@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zx.hongdou_mall.dao.ActivityMapper">
+  <resultMap id="BaseResultMap" type="com.zx.hongdou_mall.entity.Activity">
+    <!--@mbg.generated-->
+    <!--@Table activity-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="site" jdbcType="VARCHAR" property="site" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="describe" jdbcType="VARCHAR" property="describe" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, start_time, end_time, site, img, `describe`, create_time, update_time, 
+    delete_time
+  </sql>
+</mapper>

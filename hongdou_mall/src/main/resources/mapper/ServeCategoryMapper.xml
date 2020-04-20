@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zx.hongdou_mall.dao.ServeCategoryMapper">
+    <insert id="createOne">
+        INSERT INTO serve_category(name, sort, img) VALUES (#{serveCategory.name},#{serveCategory.sort},#{serveCategory.img})
+    </insert>
+    <update id="updateOne">
+        UPDATE serve_category
+        <set>
+            <if test="serveCategory.name != null and serveCategory.name != ''">
+                name=#{serveCategory.name},
+            </if>
+            <if test="serveCategory.sort != null">
+                sort=#{serveCategory.sort},
+            </if>
+            <if test="serveCategory.img != null and serveCategory.img != ''">
+                img=#{serveCategory.img}
+            </if>
+        </set>
+        WHERE id=#{serveCategory.id}
+    </update>
+    <update id="deleteOne">
+        UPDATE serve_category SET delete_time=NOW() WHERE id=#{id} AND  delete_time=0
+    </update>
+    <select id="selectOne" resultType="com.zx.hongdou_mall.entity.ServeCategory">
+        SELECT id, name, sort, img, create_time AS createTime, update_time AS updateTime FROM serve_category WHERE id=#{id} AND delete_time=0
+    </select>
+    <select id="findAll" resultType="com.zx.hongdou_mall.entity.ServeCategory">
+        SELECT id, name, sort, img, create_time AS createTime, update_time AS updateTime FROM serve_category WHERE delete_time=0
+    </select>
+</mapper>

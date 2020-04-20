@@ -1,0 +1,26 @@
+server:
+  port: 8080
+#  port: 80
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://129.204.211.11:3306/hongdou?characterEncoding=utf8&useSSL=false
+    #    url: jdbc:mysql://114.67.66.156:3306/haolundi_mall?characterEncoding=utf8&useSSL=false
+    username: javaer
+    #    username: root
+    password: ZSE$5rdxCFT^
+#    password: 123456
+
+
+#mybatis:
+#  mapper-locations: classpath:/mapper/*.xml
+#  type-aliases-package: com.zx.admin.entity
+#up-file:
+#  base-dir: C:/Users/Administrator/Desktop/FileUpload
+#  base-url: http://127.0.0.1
+
+mybatis:
+  type-aliases-package: com.zx.hongdou_mall.entty         # 所有实体类所在包路径
+  mapper-locations: classpath:mapper/*.xml      # mapper映射文件
+

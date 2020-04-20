@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zx.hongdou_mall.dao.IntroduceMapper">
+    <insert id="createOne">
+        INSERT INTO introduce(title, img, introduction) VALUES (#{introduce.title},#{introduce.img},#{introduce.introduction})
+    </insert>
+    <update id="updateOne">
+        UPDATE introduce
+        <set>
+            <if test="introduce.title != null and introduce.title != ''">
+                title=#{introduce.title},
+            </if>
+            <if test="introduce.img != null and introduce.img != ''">
+                img=#{introduce.img},
+            </if>
+            <if test="introduce.introduction != null and introduce.introduction != ''">
+                introduction=#{introduce.introduction}
+            </if>
+        </set>
+        WHERE id=#{introduce.id}
+    </update>
+    <update id="deleteOne">
+        UPDATE introduce SET delete_time=NOW() WHERE id=#{id} AND  delete_time=0
+    </update>
+    <select id="selectOne" resultType="com.zx.hongdou_mall.entity.Introduce">
+        SELECT id, title, img, introduction, create_time AS createTime, update_time AS updateTime FROM introduce WHERE id=#{id} AND delete_time=0
+    </select>
+    <select id="findAll" resultType="com.zx.hongdou_mall.entity.Introduce">
+        SELECT id, title, img, introduction, create_time AS createTime, update_time AS updateTime FROM introduce WHERE delete_time=0
+    </select>
+</mapper>
